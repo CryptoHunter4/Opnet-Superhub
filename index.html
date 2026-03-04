@@ -209,9 +209,77 @@ document.getElementById("aiResult").innerHTML=suggestion;
 }
 
 function connect(){
-alert("Wallet Connected (Demo Mode)");
+document.body.insertAdjacentHTML('beforeend',`
+<div id="walletModal" style="
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;">
+<div style="
+background:#111;
+padding:30px;
+border-radius:20px;
+text-align:center;
+width:300px;">
+<h3>Select Wallet</h3>
+<button onclick="closeModal()">OP Wallet</button>
+<button onclick="closeModal()">MetaMask</button>
+<br><br>
+<button onclick="closeModal()">Cancel</button>
+</div>
+</div>
+`);
 }
-</script>
 
+function closeModal(){
+document.getElementById("walletModal").remove();
+}
+
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+for(let i=0;i<100;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(0,255,255,0.5)";
+ctx.beginPath();
+for(let i=0;i<particles.length;i++){
+let p=particles[i];
+ctx.moveTo(p.x,p.y);
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+}
+ctx.fill();
+update();
+}
+
+function update(){
+for(let i=0;i<particles.length;i++){
+let p=particles[i];
+p.y+=p.d;
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
+}
+}
+}
+
+setInterval(draw,33);
+</script>
 </body>
 </html>
