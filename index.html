@@ -3,127 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPNET X ULTRA</title>
+<title>OP DeFi Signal</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-
 body{
 background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1a1a2e);
 background-size:400% 400%;
 animation:gradient 15s ease infinite;
 color:white;
-display:flex;
-min-height:100vh;
 }
-
 @keyframes gradient{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
 
-.sidebar{
-width:250px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(15px);
-padding:25px;
-position:fixed;
-height:100%;
-border-right:1px solid rgba(255,255,255,0.1);
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 }
 
 .logo{
 font-family:'Orbitron',sans-serif;
+color:#00ffe0;
 font-size:22px;
-margin-bottom:30px;
-color:#00ffe0;
 }
 
-.sidebar a{
-display:block;
-margin:18px 0;
-color:#ccc;
-text-decoration:none;
-transition:0.3s;
+.hero{
+text-align:center;
+padding:80px 20px;
 }
 
-.sidebar a:hover{
-color:#00ffe0;
-transform:translateX(5px);
+.hero h1{
+font-size:40px;
+margin-bottom:15px;
 }
 
-.wallet{
-background:linear-gradient(90deg,#00ffe0,#00bfff);
-color:black;
-padding:10px;
-border:none;
-border-radius:10px;
-margin-top:25px;
-cursor:pointer;
-font-weight:bold;
+.hero p{
+opacity:0.8;
 }
 
-.main{
-margin-left:250px;
+.container{
 padding:40px;
-width:100%;
-}
-
-h1{
-margin-bottom:30px;
-font-size:28px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:25px;
 }
 
 .card{
 background:rgba(255,255,255,0.08);
-padding:20px;
+padding:25px;
 border-radius:20px;
-backdrop-filter:blur(20px);
-box-shadow:0 0 25px rgba(0,255,255,0.15);
+backdrop-filter:blur(15px);
+box-shadow:0 0 30px rgba(0,255,255,0.15);
 transition:0.4s;
-position:relative;
-overflow:hidden;
 }
-
 .card:hover{
-transform:translateY(-10px) scale(1.02);
+transform:translateY(-10px);
 box-shadow:0 0 40px rgba(0,255,255,0.4);
 }
 
-.card img{
-width:100%;
-border-radius:12px;
-margin-bottom:15px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:8px;
-border:none;
-}
-
 button{
+margin-top:10px;
 padding:10px;
 width:100%;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:linear-gradient(90deg,#00ffe0,#00bfff);
 font-weight:bold;
 cursor:pointer;
 }
 
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+}
+
 footer{
-margin-top:50px;
+text-align:center;
+padding:30px;
 opacity:0.6;
 }
 </style>
@@ -131,103 +100,105 @@ opacity:0.6;
 
 <body>
 
-<div class="sidebar">
-<div class="logo">🚀 OPNET X ULTRA</div>
-<a href="#">Dashboard</a>
-<a href="#">Portfolio</a>
-<a href="#">Swap</a>
-<a href="#">Stake</a>
-<a href="#">Launchpad</a>
-<a href="#">Escrow</a>
-<button class="wallet" onclick="connectWallet()">Connect Wallet</button>
+<nav>
+<div class="logo">🚀 OP DeFi Signal</div>
+<div>Bitcoin L1 Intelligence</div>
+</nav>
+
+<div class="hero">
+<h1>Bitcoin DeFi Optimization Engine</h1>
+<p>Liquidity Tracking • Yield Optimization • Risk Intelligence • AI Strategy Layer</p>
 </div>
 
-<div class="main">
-<h1>Bitcoin Layer 1 Super DeFi App</h1>
-
+<div class="container">
 <div class="grid">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040" />
-<h3>Live BTC Market</h3>
-<p id="btc">Loading BTC...</p>
+<h3>Live BTC Price</h3>
+<p id="btc">Loading...</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1640161704729-cbe966a08476" />
-<h3>Portfolio Calculator</h3>
-<input type="number" id="amount" placeholder="BTC Amount">
-<button onclick="calc()">Calculate</button>
-<p id="value"></p>
+<h3>DeFi Liquidity Stats</h3>
+<p>Total Value Locked: $1.2B (Demo)</p>
+<p>Avg APY: 18%</p>
+<p>24h Volume: $340M</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1639762681057-408e52192e55" />
-<h3>Staking 20% APY</h3>
-<input type="number" id="stake">
-<button onclick="stake()">Estimate Reward</button>
-<p id="reward"></p>
+<h3>Yield Optimizer</h3>
+<input type="number" id="amount" placeholder="Enter BTC Amount">
+<button onclick="yieldCalc()">Find Best Yield</button>
+<p id="yieldResult"></p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1642104704074-907c0698d49b" />
-<h3>Swap BTC → OP20</h3>
-<button>Swap (Demo)</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1642790551116-18e150f3bde1" />
-<h3>Risk Analyzer</h3>
-<button onclick="risk()">Analyze</button>
+<h3>Risk Scanner</h3>
+<button onclick="risk()">Analyze Risk</button>
 <p id="riskResult"></p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1621504450181-5b5c6c1f3f10" />
-<h3>Escrow Smart Contract</h3>
-<button onclick="escrow()">Initialize</button>
-<p id="escrowStatus"></p>
+<h3>AI Strategy Suggestion</h3>
+<select id="strategy">
+<option value="conservative">Conservative</option>
+<option value="balanced">Balanced</option>
+<option value="aggressive">Aggressive</option>
+</select>
+<button onclick="aiSuggest()">Generate Strategy</button>
+<p id="aiResult"></p>
 </div>
 
+<div class="card">
+<h3>Whale Alert</h3>
+<button onclick="whale()">Scan Transactions</button>
+<p id="whaleResult"></p>
+</div>
+
+</div>
 </div>
 
 <footer>
-Built for OP_NET Vibecode Challenge | 2026
+Built for Vibecode Week 2 | OP_NET 2026
 </footer>
 
-</div>
-
 <script>
-async function prices(){
+async function btcPrice(){
 let res=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
 let data=await res.json();
-document.getElementById("btc").innerHTML="BTC Price: $"+data.bitcoin.usd;
+document.getElementById("btc").innerHTML="BTC: $"+data.bitcoin.usd;
 }
-prices();
+btcPrice();
 
-function calc(){
+function yieldCalc(){
 let amt=document.getElementById("amount").value;
-let btcText=document.getElementById("btc").innerText.replace("BTC Price: $","");
-let price=parseFloat(btcText);
-document.getElementById("value").innerHTML="Portfolio Value: $"+(amt*price).toFixed(2);
-}
-
-function stake(){
-let s=document.getElementById("stake").value;
-document.getElementById("reward").innerHTML="Estimated Reward: "+(s*0.20)+" BTC";
+let apy=0.18;
+let result=amt*apy;
+document.getElementById("yieldResult").innerHTML="Best Pool: 18% APY → Estimated Yearly Reward: "+result+" BTC";
 }
 
 function risk(){
-let r=["Low 🟢","Medium 🟡","High 🔴"];
+let r=["Low Risk 🟢","Medium Risk 🟡","High Risk 🔴"];
 document.getElementById("riskResult").innerHTML=r[Math.floor(Math.random()*3)];
 }
 
-function escrow(){
-document.getElementById("escrowStatus").innerHTML="Escrow Ready (Demo)";
+function aiSuggest(){
+let type=document.getElementById("strategy").value;
+let suggestion="";
+if(type==="conservative"){
+suggestion="Stake BTC in low volatility pool (8-12% APY)";
+}
+else if(type==="balanced"){
+suggestion="Provide liquidity in BTC-OP20 pair (15-18% APY)";
+}
+else{
+suggestion="Yield farm emerging OP-20 tokens (20%+ APY)";
+}
+document.getElementById("aiResult").innerHTML=suggestion;
 }
 
-function connectWallet(){
-alert("OP Wallet Connected (Demo Mode)");
+function whale(){
+document.getElementById("whaleResult").innerHTML="⚡ 1,240 BTC moved to Exchange (Demo)";
 }
 </script>
 
