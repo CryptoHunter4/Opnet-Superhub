@@ -3,179 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPNET DeFi SuperHub</title>
-
+<title>OPNET X - Ultimate Bitcoin L1 Super App</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{
 background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-min-height:100vh;
 color:white;
+transition:0.3s;
 }
-
 header{
-text-align:center;
-padding:40px 20px;
-font-size:32px;
+padding:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+}
+.logo{
+font-size:22px;
 font-weight:700;
 background:linear-gradient(90deg,#00f5a0,#00d9f5);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-
+button{
+padding:8px 14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+.toggle{
+background:#00d9f5;
+}
 .container{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-padding:40px;
+gap:20px;
+padding:30px;
 }
-
 .card{
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.07);
+padding:20px;
 border-radius:20px;
-padding:25px;
 backdrop-filter:blur(15px);
-box-shadow:0 8px 32px rgba(0,0,0,0.37);
+box-shadow:0 8px 32px rgba(0,0,0,0.4);
 transition:0.3s;
 }
-
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 40px rgba(0,0,0,0.6);
+transform:translateY(-6px);
 }
-
-h3{
-margin-bottom:15px;
-font-weight:600;
-}
-
+h3{margin-bottom:12px}
 input{
 width:100%;
-padding:12px;
+padding:10px;
+border-radius:10px;
+border:none;
 margin-bottom:10px;
-border-radius:10px;
-border:none;
-outline:none;
 }
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-background:linear-gradient(90deg,#00f5a0,#00d9f5);
-color:#000;
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
+.chart{
+height:300px;
 }
-
-button:hover{
-opacity:0.85;
-}
-
-.result{
-margin-top:10px;
-font-weight:500;
-}
-
 footer{
 text-align:center;
 padding:20px;
 opacity:0.6;
-font-size:14px;
 }
-
+.light{
+background:white;
+color:black;
+}
+.light .card{
+background:#f3f3f3;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-🚀 OPNET DeFi SuperHub <br>
-<span style="font-size:16px;font-weight:400;">Bitcoin Layer 1 DeFi Control Center</span>
+<div class="logo">🚀 OPNET X</div>
+<button class="toggle" onclick="toggleMode()">Toggle Mode</button>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h3>💰 Staking Simulator</h3>
-<input type="number" id="stakeAmount" placeholder="Enter BTC amount">
-<button onclick="calculateStake()">Calculate Reward</button>
-<p id="stakeResult" class="result"></p>
+<h3>💰 Live BTC Price</h3>
+<p id="btcPrice">Loading...</p>
 </div>
 
 <div class="card">
-<h3>📈 Yield Calculator</h3>
-<input type="number" id="apy" placeholder="Enter APY %">
-<button onclick="calculateYield()">Calculate Yield</button>
-<p id="yieldResult" class="result"></p>
+<h3>📊 Portfolio Calculator</h3>
+<input type="number" id="btcAmount" placeholder="Enter BTC amount">
+<button onclick="calcPortfolio()">Calculate</button>
+<p id="portfolioValue"></p>
 </div>
 
 <div class="card">
-<h3>🐋 Whale Alert</h3>
-<p>Live Whale Movement (Demo)</p>
-<p style="font-size:22px;font-weight:600;">1,240 BTC</p>
+<h3>🔄 Swap Simulator</h3>
+<input type="number" placeholder="BTC Amount">
+<button>Swap to OP-20 (Demo)</button>
 </div>
 
 <div class="card">
-<h3>🔐 Escrow Interface</h3>
-<button onclick="createEscrow()">Initialize Escrow</button>
-<p id="escrowStatus" class="result"></p>
+<h3>💎 Staking Tool</h3>
+<input type="number" id="stake" placeholder="Stake BTC">
+<button onclick="stakeCalc()">Estimate Reward</button>
+<p id="stakeResult"></p>
 </div>
 
 <div class="card">
-<h3>📊 Risk Meter</h3>
-<button onclick="riskCheck()">Analyze Risk</button>
-<p id="riskResult" class="result"></p>
+<h3>🐋 Whale Tracker</h3>
+<p>Latest Whale: 1,240 BTC (Demo)</p>
 </div>
 
 <div class="card">
-<h3>🚀 Launchpad Preview</h3>
-<p>Upcoming OP-20 Token</p>
-<p style="font-size:20px;font-weight:600;">$PILL Presale</p>
+<h3>📈 Trading Chart</h3>
+<iframe class="chart" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview&symbol=BTCUSD&interval=D&hidesidetoolbar=1&theme=dark" frameborder="0"></iframe>
+</div>
+
+<div class="card">
+<h3>🚀 Launchpad</h3>
+<p>$PILL Token Presale</p>
+<button>View Details</button>
+</div>
+
+<div class="card">
+<h3>🔐 Escrow</h3>
+<button onclick="escrow()">Initialize Escrow</button>
+<p id="escrowStatus"></p>
 </div>
 
 </div>
 
 <footer>
-Built for OP_NET Bitcoin L1 Ecosystem | Vibecode Challenge Entry
+Built for OP_NET Bitcoin Layer 1 | Vibecode Challenge 2026
 </footer>
 
 <script>
 
-function calculateStake(){
-let amount=document.getElementById("stakeAmount").value;
-let reward=amount*0.18;
-document.getElementById("stakeResult").innerHTML=
-"Estimated Annual Reward: "+reward.toFixed(4)+" BTC";
+async function fetchBTC(){
+let res=await fetch("https://api.coindesk.com/v1/bpi/currentprice/BTC.json");
+let data=await res.json();
+document.getElementById("btcPrice").innerHTML="$"+data.bpi.USD.rate+" USD";
+}
+fetchBTC();
+
+function calcPortfolio(){
+let amount=document.getElementById("btcAmount").value;
+let priceText=document.getElementById("btcPrice").innerText.replace("$","").replace(" USD","").replace(",","");
+let price=parseFloat(priceText);
+let value=amount*price;
+document.getElementById("portfolioValue").innerHTML="Value: $"+value.toFixed(2);
 }
 
-function calculateYield(){
-let apy=document.getElementById("apy").value;
-let result=1000*(apy/100);
-document.getElementById("yieldResult").innerHTML=
-"Yearly Return on 1000 BTC: "+result.toFixed(4)+" BTC";
+function stakeCalc(){
+let amount=document.getElementById("stake").value;
+let reward=amount*0.20;
+document.getElementById("stakeResult").innerHTML="Estimated Reward: "+reward+" BTC";
 }
 
-function createEscrow(){
-document.getElementById("escrowStatus").innerHTML=
-"Escrow Contract Initialized (Demo Mode)";
+function escrow(){
+document.getElementById("escrowStatus").innerHTML="Escrow Smart Contract Ready (Demo)";
 }
 
-function riskCheck(){
-let risk=["Low Risk 🟢","Moderate Risk 🟡","High Risk 🔴"];
-let random=risk[Math.floor(Math.random()*risk.length)];
-document.getElementById("riskResult").innerHTML=random;
+function toggleMode(){
+document.body.classList.toggle("light");
 }
 
 </script>
